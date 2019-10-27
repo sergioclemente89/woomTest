@@ -2,7 +2,9 @@ package com.clementecastillo.people.screen.base
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import com.clementecastillo.people.R
 import com.clementecastillo.people.extension.fadeIn
 import com.clementecastillo.people.extension.fadeOut
 import com.clementecastillo.people.extension.hideKeyboard
@@ -15,12 +17,14 @@ import com.clementecastillo.people.presenter.Presenter
 import com.clementecastillo.people.presenter.PresenterView
 import com.clementecastillo.people.screen.controller.LoadingController
 import com.clementecastillo.people.screen.controller.RouterController
+import com.clementecastillo.people.screen.controller.ToolbarController
 import com.clementecastillo.people.screen.peoplelist.PeopleListActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.loading_layout.*
+import kotlinx.android.synthetic.main.toolbar_view.*
 
 @SuppressLint("RegistrationDate")
-abstract class BaseActivity : AppCompatActivity(), ScreenController, RouterController, LoadingController {
+abstract class BaseActivity : AppCompatActivity(), ScreenController, RouterController, LoadingController, ToolbarController {
 
     private var presenter: Presenter<*>? = null
     private var disposables = CompositeDisposable()
@@ -71,4 +75,20 @@ abstract class BaseActivity : AppCompatActivity(), ScreenController, RouterContr
         loading_view?.fadeOut()
     }
 
+    override fun hideBackButton() {
+        toolbar_view.navigationIcon = null
+    }
+
+    override fun showBackButton() {
+        toolbar_view.run {
+            setNavigationIcon(R.drawable.ic_back)
+            setNavigationOnClickListener {
+                onBackPressed()
+            }
+        }
+    }
+
+    override fun setScreenTitle(@StringRes titleRes: Int) {
+        toolbar_title.setText(titleRes)
+    }
 }

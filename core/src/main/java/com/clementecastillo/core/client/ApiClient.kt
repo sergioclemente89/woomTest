@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface ApiClient {
 
-    fun getPeople(): Single<List<Person>>
+    fun getPeople(currentItemCount: Int): Single<List<Person>>
 }

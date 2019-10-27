@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/person_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/background_male"
+    app:cardUseCompatPadding="true"
+    android:layout_marginBottom="@dimen/size_xxs"
+    app:cardCornerRadius="@dimen/size_xs">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/person_layout"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/size_s">
+
+        <ImageView
+            android:id="@+id/person_photo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_avatar_male"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_xs"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="@dimen/size_xs"
+            app:layout_constraintLeft_toRightOf="@id/person_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sample name" />
+
+        <TextView
+            android:id="@+id/person_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_xs"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="@dimen/size_xs"
+            app:layout_constraintLeft_toLeftOf="@id/person_name"
+            app:layout_constraintTop_toBottomOf="@id/person_name"
+            tools:text="sample@email.com" />
+
+        <TextView
+            android:id="@+id/person_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_xs"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="@dimen/size_xs"
+            app:layout_constraintLeft_toLeftOf="@id/person_email"
+            app:layout_constraintTop_toBottomOf="@id/person_email"
+            tools:text="666666666" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

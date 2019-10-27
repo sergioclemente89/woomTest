@@ -4,6 +4,7 @@ import com.clementecastillo.people.injection.ScreenScope
 import com.clementecastillo.people.screen.base.BaseActivity
 import com.clementecastillo.people.screen.controller.LoadingController
 import com.clementecastillo.people.screen.controller.RouterController
+import com.clementecastillo.people.screen.controller.ToolbarController
 import dagger.Module
 import dagger.Provides
 
@@ -18,7 +19,7 @@ class ScreenModule(private val activity: BaseActivity) {
     @Provides
     fun loadingController(): LoadingController = activity
 
-//    @ScreenScope
-//    @Provides
-//    fun toolbarController(): ToolbarController = activity
+    @ScreenScope
+    @Provides
+    fun toolbarController(): ToolbarController = activity
 }

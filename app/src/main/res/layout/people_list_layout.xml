@@ -3,21 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            style="@style/Text.Toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/people_list" />
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/toolbar_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/people_recyclerview"

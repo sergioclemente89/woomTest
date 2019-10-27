@@ -12,7 +12,7 @@ class PeopleApiRepository @Inject constructor(
     private val transactionRequest: TransactionRequest
 ) {
 
-    fun getPeople(): Single<Transaction<List<Person>>> {
-        return transactionRequest.wrap(apiClient.getPeople())
+    fun getPeople(currentItemCount: Int = 0): Single<Transaction<List<Person>>> {
+        return transactionRequest.wrap(apiClient.getPeople(currentItemCount))
     }
 }
