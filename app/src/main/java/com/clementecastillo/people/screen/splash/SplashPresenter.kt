@@ -11,7 +11,7 @@ class SplashPresenter @Inject constructor(
 
     override fun init(view: SplashView) {
         view.onAnimationFinish().subscribe {
-            // TODO: Navigate to next screen
+            routerController.routeToPeopleList()
         }.addTo(disposables)
     }
 }

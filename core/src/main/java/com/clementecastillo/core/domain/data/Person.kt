@@ -2,6 +2,7 @@ package com.clementecastillo.core.domain.data
 
 
 interface Person {
+    val personId: PersonId
     val gender: GENDER
     val personName: PersonName
     val personPicture: PersonPicture

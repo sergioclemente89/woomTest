@@ -12,7 +12,7 @@ import javax.inject.Inject
 class SplashActivity : BaseActivity(), SplashView {
 
     @Inject
-    lateinit var splashPresenter: SplashPresenter
+    lateinit var presenter: SplashPresenter
 
     private val onAnimationFinishSubject = PublishSubject.create<Unit>()
 
@@ -34,7 +34,7 @@ class SplashActivity : BaseActivity(), SplashView {
             override fun onAnimationStart(p0: Animator?) {}
         })
 
-        init(splashPresenter, this)
+        init(presenter, this)
     }
 
     override fun onAnimationFinish(): Observable<Unit> {

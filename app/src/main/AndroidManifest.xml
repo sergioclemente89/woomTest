@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.clementecastillo.people">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".PeopleApp"
         android:allowBackup="false"
@@ -22,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".screen.peoplelist.PeopleListActivity" />
 
     </application>
 
