@@ -24,9 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".screen.peoplelist.PeopleListActivity" />
-
+        <activity android:name=".screen.persondetail.PersonDetailActivity" />
     </application>
 
 </manifest>

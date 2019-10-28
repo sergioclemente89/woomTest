@@ -2,6 +2,7 @@ package com.clementecastillo.people.screen.base
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.clementecastillo.people.R
@@ -19,6 +20,7 @@ import com.clementecastillo.people.screen.controller.LoadingController
 import com.clementecastillo.people.screen.controller.RouterController
 import com.clementecastillo.people.screen.controller.ToolbarController
 import com.clementecastillo.people.screen.peoplelist.PeopleListActivity
+import com.clementecastillo.people.screen.persondetail.PersonDetailActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.loading_layout.*
 import kotlinx.android.synthetic.main.toolbar_view.*
@@ -47,11 +49,14 @@ abstract class BaseActivity : AppCompatActivity(), ScreenController, RouterContr
             .build()
     }
 
-    private fun routeTo(activity: Class<out BaseActivity>, finish: Boolean, clearStack: Boolean) {
+    private fun routeTo(activity: Class<out BaseActivity>, finish: Boolean, clearStack: Boolean, extras: Bundle? = null) {
         hideKeyboard(this)
         val intent = Intent(this, activity)
         if (clearStack) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
+        extras?.let {
+            intent.putExtras(it)
         }
         startActivity(intent)
         if (finish) {
@@ -61,6 +66,13 @@ abstract class BaseActivity : AppCompatActivity(), ScreenController, RouterContr
 
     override fun routeToPeopleList() {
         routeTo(PeopleListActivity::class.java, true, true)
+    }
+
+    override fun routeToPersonDetail(personUuid: String) {
+        val extras = Bundle().apply {
+            putString(PersonDetailActivity.PERSON_DETAIL_UUID, personUuid)
+        }
+        routeTo(PersonDetailActivity::class.java, false, false, extras = extras)
     }
 
     override fun close() {

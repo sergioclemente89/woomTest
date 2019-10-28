@@ -1,4 +1,4 @@
-package com.clementecastillo.people.screen.peoplelist.adapter
+package com.clementecastillo.people.screen.peoplelist
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -25,6 +25,7 @@ class PeopleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val peopleList: MutableList<Person> = mutableListOf()
     private val nextPageSubject = PublishSubject.create<Int>()
+    private val onPersonClickSubject = PublishSubject.create<String>()
     private var canLoadMore = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -72,6 +73,7 @@ class PeopleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun onNextPage(): Observable<Int> = nextPageSubject
+    fun onPersonClick(): Observable<String> = onPersonClickSubject
 
     inner class PersonHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -84,7 +86,7 @@ class PeopleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
                 ImageLoader.load(Uri.parse(person.personPicture.medium), person_photo, person_photo.width, person_photo.height, true, person_photo.drawable)
                 person_layout.setOnClickListener {
-
+                    onPersonClickSubject.onNext(person.personId.uuid)
                 }
             }
         }

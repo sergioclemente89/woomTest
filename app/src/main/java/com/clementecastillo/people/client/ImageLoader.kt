@@ -61,7 +61,9 @@ object ImageLoader {
             setColorSchemeColors(ContextCompat.getColor(target.context, R.color.colorAccent))
             start()
         })
-        options.transforms(*transformations.toTypedArray())
+        if (transformations.isNotEmpty()) {
+            options.transforms(*transformations.toTypedArray())
+        }
         return options
     }
 

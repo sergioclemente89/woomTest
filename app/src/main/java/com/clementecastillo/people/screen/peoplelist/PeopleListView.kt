@@ -8,4 +8,5 @@ interface PeopleListView : PresenterView {
 
     fun addPeople(peopleList: List<Person>)
     fun onRequestNextPage(): Observable<Int>
+    fun onPersonClick(): Observable<String>
 }

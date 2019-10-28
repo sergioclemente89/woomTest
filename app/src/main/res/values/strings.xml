@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">People</string>
     <string name="people_list">Listado de personas</string>
+    <string name="title_activity_person_detail">PersonDetail</string>
 </resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".screen.persondetail.PersonDetailActivity"
+    tools:showIn="@layout/person_detail_layout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:paddingTop="@dimen/size_s"
+            android:paddingBottom="@dimen/size_s"
+            android:text="Sexo: Hombre" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:paddingTop="@dimen/size_s"
+            android:paddingBottom="@dimen/size_s"
+            android:text="Nombre completo: Nombre y apellidos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:paddingTop="@dimen/size_s"
+            android:paddingBottom="@dimen/size_s"
+            android:text="Localicación: Nombre y apellidos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:paddingTop="@dimen/size_s"
+            android:paddingBottom="@dimen/size_s"
+            android:text="Fecha de registro: Nombre y apellidos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:paddingTop="@dimen/size_s"
+            android:paddingBottom="@dimen/size_s"
+            android:text="Email: Nombre y apellidos" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

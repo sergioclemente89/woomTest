@@ -27,10 +27,3 @@ fun Completable.mainThread(): Completable {
 fun <T> Maybe<T>.mainThread(): Maybe<T> {
     return observeOn(AndroidSchedulers.mainThread())
 }
-
-inline fun <T> Observable<T>.takeWhen(crossinline predicate: (a: T) -> Boolean): Observable<T> =
-    takeUntil { predicate(it) }.filter { predicate(it) }
-
-fun <R, T> biFunction(): BiFunction<R, T, Pair<R, T>> {
-    return BiFunction { t1, t2 -> t1 to t2 }
-}

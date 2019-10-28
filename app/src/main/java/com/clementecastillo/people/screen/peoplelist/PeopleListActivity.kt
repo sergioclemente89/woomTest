@@ -1,14 +1,12 @@
 package com.clementecastillo.people.screen.peoplelist
 
 import android.os.Bundle
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clementecastillo.core.domain.data.Person
 import com.clementecastillo.people.R
 import com.clementecastillo.people.screen.base.BaseActivity
 import com.clementecastillo.people.screen.controller.ToolbarController
-import com.clementecastillo.people.screen.peoplelist.adapter.PeopleAdapter
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.people_list_layout.*
 import javax.inject.Inject
@@ -53,5 +51,9 @@ class PeopleListActivity : BaseActivity(), PeopleListView {
 
     override fun onRequestNextPage(): Observable<Int> {
         return peopleAdapter.onNextPage()
+    }
+
+    override fun onPersonClick(): Observable<String> {
+        return peopleAdapter.onPersonClick()
     }
 }

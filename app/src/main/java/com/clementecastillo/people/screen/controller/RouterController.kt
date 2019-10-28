@@ -6,4 +6,5 @@ interface RouterController {
 
     fun routeToPeopleList()
 
+    fun routeToPersonDetail(personUuid: String)
 }
