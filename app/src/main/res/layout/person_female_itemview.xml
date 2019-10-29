@@ -5,7 +5,8 @@
     android:id="@+id/person_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/background_female"
+    android:layout_margin="@dimen/size_xxs"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/size_xs"
     app:cardUseCompatPadding="true">
 
@@ -13,25 +14,26 @@
         android:id="@+id/person_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
+        android:background="@color/background_female"
         android:padding="@dimen/size_s">
 
         <ImageView
             android:id="@+id/person_photo"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/ic_avatar_female"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_avatar_female" />
 
         <TextView
             android:id="@+id/person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/size_xs"
-            android:drawableLeft="@drawable/ic_person"
+            android:layout_marginLeft="@dimen/size_s"
             android:drawablePadding="@dimen/size_xs"
+            app:drawableLeftCompat="@drawable/ic_person"
+            app:drawableTint="@color/tint_female"
             app:layout_constraintLeft_toRightOf="@id/person_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Sample name" />
@@ -41,8 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_xs"
-            android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="@dimen/size_xs"
+            app:drawableLeftCompat="@drawable/ic_email"
+            app:drawableTint="@color/tint_female"
             app:layout_constraintLeft_toLeftOf="@id/person_name"
             app:layout_constraintTop_toBottomOf="@id/person_name"
             tools:text="sample@email.com" />
@@ -52,8 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_xs"
-            android:drawableLeft="@drawable/ic_phone"
             android:drawablePadding="@dimen/size_xs"
+            app:drawableLeftCompat="@drawable/ic_phone"
+            app:drawableTint="@color/tint_female"
             app:layout_constraintLeft_toLeftOf="@id/person_email"
             app:layout_constraintTop_toBottomOf="@id/person_email"
             tools:text="666666666" />

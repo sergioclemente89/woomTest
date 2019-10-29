@@ -14,4 +14,12 @@ interface Person {
     enum class GENDER {
         MALE, FEMALE
     }
+
+    fun getFullName(): String {
+        return "${personName.title} ${personName.first} ${personName.last}"
+    }
+
+    fun getAddress(): String {
+        return "${personLocation.street.streetName} ${personLocation.street.number}, ${personLocation.city} (${personLocation.state})"
+    }
 }

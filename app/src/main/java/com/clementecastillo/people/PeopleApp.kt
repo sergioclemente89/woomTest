@@ -1,6 +1,8 @@
 package com.clementecastillo.people
 
 import android.app.Application
+import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
 import com.clementecastillo.people.injection.component.AppComponent
 import com.clementecastillo.people.injection.component.DaggerAppComponent
 import com.clementecastillo.people.injection.controller.AppController
@@ -21,5 +23,8 @@ class PeopleApp : Application(), AppController {
     override fun onCreate() {
         super.onCreate()
         appController = this
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
     }
 }

@@ -9,4 +9,8 @@
 
     <color name="background_female">#32CDDC39</color>
     <color name="background_male">#34673AB7</color>
+
+    <color name="tint_female">#0F33B3</color>
+    <color name="tint_male">#004E15</color>
+
 </resources>

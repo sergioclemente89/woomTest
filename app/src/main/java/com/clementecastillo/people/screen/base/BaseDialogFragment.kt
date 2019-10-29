@@ -13,13 +13,12 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.clementecastillo.people.R
-import com.clementecastillo.people.injection.component.ScreenComponent
 import com.clementecastillo.people.extension.tagName
 import com.clementecastillo.people.extension.toPx
+import com.clementecastillo.people.injection.component.ScreenComponent
 import com.clementecastillo.people.injection.controller.ScreenController
 import com.clementecastillo.people.presenter.Presenter
 import com.clementecastillo.people.presenter.PresenterView
-import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
@@ -97,28 +96,16 @@ open class BaseDialogFragment : DialogFragment() {
         }
     }
 
-    fun clear(fragmentManager: FragmentManager) {
-        val tag = tagName()
-        val currentFragment = fragmentManager.findFragmentByTag(tag) as BaseDialogFragment?
-        currentFragment?.dismiss()
-    }
-
     fun events(): Observable<DialogStateEvent> = eventEmitter
-
-    fun onAttached(): Completable {
-        return Completable.fromSingle(eventEmitter.filter {
-            it == DialogStateEvent.ATTACHED
-        }.firstElement().toSingle())
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        eventEmitter.onNext(DialogStateEvent.ATTACHED)
+        emitEvent(DialogStateEvent.ATTACHED)
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        eventEmitter.onNext(DialogStateEvent.DETACHED)
+        emitEvent(DialogStateEvent.DETACHED)
     }
 
     fun emitEvent(event: DialogStateEvent) {

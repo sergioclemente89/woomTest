@@ -26,27 +26,27 @@ class PeopleListPresenter @Inject constructor(
                     when (it) {
                         is Transaction.Success -> {
                             addPeople(it.data)
+                            onRequestNextPage().subscribe {
+                                getMorePeopleUseCase.bind(GetMorePeopleUseCase.Params(it))
+                                    .subscribe { it ->
+                                        when (it) {
+                                            is Transaction.Success -> {
+                                                view.addPeople(it.data)
+                                            }
+                                            is Transaction.Fail -> {
+                                                routerController.showErrorDialog()
+                                            }
+                                        }
+                                    }.addTo(disposables)
+                            }.addTo(disposables)
                         }
                         is Transaction.Fail -> {
-                            // TODO: Show error
+                            routerController.showErrorDialog()
                         }
                     }
 
                 }.addTo(disposables)
 
-            onRequestNextPage().subscribe {
-                getMorePeopleUseCase.bind(GetMorePeopleUseCase.Params(it))
-                    .subscribe { it ->
-                        when (it) {
-                            is Transaction.Success -> {
-                                view.addPeople(it.data)
-                            }
-                            is Transaction.Fail -> {
-                                // TODO: Show error
-                            }
-                        }
-                    }.addTo(disposables)
-            }.addTo(disposables)
 
             onPersonClick().throttleDefault().subscribe {
                 routerController.routeToPersonDetail(it)

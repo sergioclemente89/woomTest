@@ -2,4 +2,10 @@
     <string name="app_name">People</string>
     <string name="people_list">Listado de personas</string>
     <string name="title_activity_person_detail">PersonDetail</string>
+
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="registration_date_x">Fecha de registro: %s</string>
+    <string name="default_error_message">Ha ocurrido un error. Inténtalo de nuevo más tarde</string>
+    <string name="accept">Aceptar</string>
 </resources>

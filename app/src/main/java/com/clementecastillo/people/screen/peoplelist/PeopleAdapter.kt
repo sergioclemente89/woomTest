@@ -1,6 +1,5 @@
 package com.clementecastillo.people.screen.peoplelist
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -77,10 +76,9 @@ class PeopleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class PersonHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        @SuppressLint("SetTextI18n")
         fun bindPerson(person: Person) {
             itemView.run {
-                person_name.text = "${person.personName.title} ${person.personName.first} ${person.personName.last}"
+                person_name.text = person.getFullName()
                 person_email.text = person.email
                 person_phone.text = person.phone
 

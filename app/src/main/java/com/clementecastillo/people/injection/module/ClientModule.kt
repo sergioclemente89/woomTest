@@ -13,8 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import okhttp3.Cache
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -60,11 +59,34 @@ class ClientModule {
 
     @Provides
     @Singleton
-    fun okHttpClient(logger: HttpLoggingInterceptor, cache: Cache): OkHttpClient {
+    fun connectionSpec(): ConnectionSpec {
+        return ConnectionSpec.Builder(ConnectionSpec.COMPATIBLE_TLS)
+            .supportsTlsExtensions(true)
+            .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0)
+            .cipherSuites(
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,
+                CipherSuite.TLS_ECDHE_RSA_WITH_RC4_128_SHA,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+            ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun okHttpClient(logger: HttpLoggingInterceptor, cache: Cache, connectionSpec: ConnectionSpec): OkHttpClient {
         return OkHttpClient.Builder()
             .cache(cache)
             .readTimeout(20, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
+            .connectionSpecs(listOf(connectionSpec)) // Fix TLS error for Pre-Lollipop
             .addInterceptor(logger)
             .build()
     }

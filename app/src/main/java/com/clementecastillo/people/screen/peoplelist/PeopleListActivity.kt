@@ -35,6 +35,7 @@ class PeopleListActivity : BaseActivity(), PeopleListView {
         toolbarController.run {
             setScreenTitle(R.string.people_list)
             hideBackButton()
+            setToolbarColor(R.color.colorPrimary)
         }
     }
 
