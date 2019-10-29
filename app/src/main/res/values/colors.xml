@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="translucent_color">#BF000000</color>
+    <color name="splash_background_color">#e4e7e9</color>
+
+    <color name="background_female">#32CDDC39</color>
+    <color name="background_male">#34673AB7</color>
+
+    <color name="tint_female">#0F33B3</color>
+    <color name="tint_male">#004E15</color>
+
+</resources>
